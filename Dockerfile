@@ -1,6 +1,7 @@
 # Fase 1: Compilación
 FROM eclipse-temurin:17-jdk AS build
 COPY . .
+RUN chmod +x mvnw
 RUN ./mvnw clean install -DskipTests
 
 # Fase 2: Ejecución
