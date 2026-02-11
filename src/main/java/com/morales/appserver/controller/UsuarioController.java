@@ -21,7 +21,7 @@ public class UsuarioController {
     }
 
 
-
+    @SuppressWarnings("unused")
     @PostMapping("/registro")
     public ResponseEntity<?> registrar(@RequestBody Usuario usuario) {
         try {
@@ -35,10 +35,12 @@ public class UsuarioController {
             return ResponseEntity.ok(new AuthResponse(token, nuevoUsuario));
 
         } catch (Exception e) {
-            // En caso de error (email duplicado, etc.), devolvemos un error 400
+
             return ResponseEntity.badRequest().body("Error en el registro: " + e.getMessage());
         }
     }
+
+    @SuppressWarnings("unused")
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginRequest loginRequest) {
         Usuario usuario = usuarioService.autenticar(
