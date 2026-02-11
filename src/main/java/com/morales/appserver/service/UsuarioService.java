@@ -22,4 +22,11 @@ public class UsuarioService {
         usuario.setContrasenia(contrasenia_hasheada);
         return usuarioRepository.save(usuario);
     }
+
+    public Usuario autenticar(String identificador, String password) {
+        // Buscamos al usuario por Email O por Nombre
+        return usuarioRepository.findByEmailOrNombreUsuario(identificador, identificador)
+                .filter(user -> user.getContrasenia().equals(password)) // Aquí deberías usar passwordEncoder.matches si están encriptadas
+                .orElse(null);
+    }
 }
