@@ -25,8 +25,8 @@ public class UsuarioService {
 
     public Usuario autenticar(String identificador, String password) {
         // Buscamos al usuario por Email O por Nombre
-        return usuarioRepository.findByEmailOrNombre_usuario(identificador, identificador)
-                .filter(user -> user.getContrasenia().equals(password)) // Aquí deberías usar passwordEncoder.matches si están encriptadas
+        return usuarioRepository.findByEmailOrNombreUsuario(identificador, identificador)
+                .filter(user -> passwordEncoder.matches(password, user.getContrasenia())) // Aquí deberías usar passwordEncoder.matches si están encriptadas
                 .orElse(null);
     }
 }

@@ -13,8 +13,8 @@ public class Usuario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, length = 50)
-    private String nombre_usuario;
+    @Column(name = "nombre_usuario", nullable = false, length = 50)
+    private String nombreUsuario;
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @Column(nullable = false, length = 200)
@@ -29,7 +29,7 @@ public class Usuario {
     public Usuario () {}
 
     public Usuario (String nombre_usuario, String contrasenia, String email) {
-        this.nombre_usuario = nombre_usuario;
+        this.nombreUsuario = nombre_usuario;
         this.contrasenia = contrasenia;
         this.email = email;
     }
@@ -48,11 +48,11 @@ public class Usuario {
     }
 
     public String getNombre_usuario() {
-        return nombre_usuario;
+        return nombreUsuario;
     }
 
     public void setNombre_usuario(String nombre_usuario) {
-        this.nombre_usuario = nombre_usuario;
+        this.nombreUsuario = nombre_usuario;
     }
 
     public String getContrasenia() {
